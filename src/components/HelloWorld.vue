@@ -40,6 +40,7 @@ const count = ref(0)
   <!--  Icon(前缀) Base(报名) Xitongshezhi(svg文件名) -->
   <el-button type="primary" ><el-icon><IconBaseXitongshezhi /></el-icon></el-button>
   <div class="scss-demo"></div>
+  <h1 class="text-red">text-red</h1>
 </template>
 
 <style scoped lang="scss">

@@ -7,11 +7,13 @@ import Components from 'unplugin-vue-components/vite'
 // elment-plus  按需导入
 import {ElementPlusResolver} from 'unplugin-vue-components/resolvers'
 // icon 插件
-import Icons from "unplugin-icons/vite";
+import Icons from 'unplugin-icons/vite'
 // icons 按需导入
-import IconsResolver from "unplugin-icons/resolver";
+import IconsResolver from 'unplugin-icons/resolver'
 // 自定义 svg
-import {FileSystemIconLoader} from "unplugin-icons/loaders";
+import {FileSystemIconLoader} from 'unplugin-icons/loaders'
+ // 导入UnoCSS
+import UnoCSS from 'unocss/vite'
 
 
 // https://vitejs.dev/config/
@@ -60,6 +62,7 @@ export default defineConfig(({mode}) => {
                     "base": FileSystemIconLoader("src/assets/icons/base")
                 }
             }),
+            UnoCSS({}),
         ],
     }
 })
