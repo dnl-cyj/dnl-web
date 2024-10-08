@@ -34,6 +34,8 @@ const count = ref(0)
     >.
   </p>
   <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+  <el-button type="success">1111</el-button>
+  <el-button type="primary">2222</el-button>
 </template>
 
 <style scoped>
