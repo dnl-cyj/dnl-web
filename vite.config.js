@@ -6,11 +6,12 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 // elment-plus  按需导入
 import {ElementPlusResolver} from 'unplugin-vue-components/resolvers'
-
 // icon 插件
 import Icons from "unplugin-icons/vite";
 // icons 按需导入
 import IconsResolver from "unplugin-icons/resolver";
+// 自定义 svg
+import {FileSystemIconLoader} from "unplugin-icons/loaders";
 
 
 // https://vitejs.dev/config/
@@ -19,6 +20,14 @@ export default defineConfig(({mode}) => {
         resolve: {
             alias: {
                 "@": path.resolve(__dirname, "src")
+            }
+        },
+        css: {
+            preprocessorOptions: {
+                scss: {
+                    javascriptEnable: true,
+                    additionalData: `@use "@/assets/style/variable.scss" as *;`
+                }
             }
         },
         plugins: [
@@ -39,6 +48,7 @@ export default defineConfig(({mode}) => {
                     IconsResolver({
                         // https://icon-sets.iconify.design/
                         prefix: "icon",
+                        customCollections: ["base"],
                     }),
                 ]
             }),
@@ -46,6 +56,9 @@ export default defineConfig(({mode}) => {
                 compiler: "vue3",
                 // 自动安装图标库
                 autoInstall: true,
+                customCollections: {
+                    "base": FileSystemIconLoader("src/assets/icons/base")
+                }
             }),
         ],
     }

@@ -37,10 +37,18 @@ const count = ref(0)
   <el-button type="success">1111</el-button>
   <el-button type="primary">2222</el-button>
   <el-button type="primary"><IconMakiArrow /></el-button>
+  <!--  Icon(前缀) Base(报名) Xitongshezhi(svg文件名) -->
+  <el-button type="primary" ><el-icon><IconBaseXitongshezhi /></el-icon></el-button>
+  <div class="scss-demo"></div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .read-the-docs {
   color: #888;
+}
+.scss-demo {
+  width: 100px;
+  height: 100px;
+  background-color: $bg-color;
 }
 </style>
