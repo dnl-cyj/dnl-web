@@ -28,7 +28,8 @@ export default defineConfig(({mode}) => {
             preprocessorOptions: {
                 scss: {
                     javascriptEnable: true,
-                    additionalData: `@use "@/assets/style/variable.scss" as *;`
+                    additionalData: `@use "@/assets/style/variable.scss" as *;`,
+                    api:'modern-compiler'
                 }
             }
         },
