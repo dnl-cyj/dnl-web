@@ -1,6 +1,7 @@
 <script setup>
 import {ref} from 'vue'
-
+import {demoStore} from "@/stores/modules/demo";
+const demo = demoStore()
 defineProps({
   msg: String,
 })
@@ -9,6 +10,13 @@ const count = ref(0)
 </script>
 
 <template>
+  <el-card class="text-left text-white border-white border-1 border-solid mt-10 bg-[#242424]">
+    <template #header> 子组件</template>
+    <el-form>
+      <el-form-item label="数字："> {{ demo.count }}</el-form-item>
+      <el-form-item label="加倍："> {{ demo.double }}</el-form-item>
+    </el-form>
+  </el-card>
   <h1>{{ msg }}</h1>
 
   <div class="card">
