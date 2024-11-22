@@ -18,7 +18,6 @@ import UnoCSS from 'unocss/vite'
 // https://vitejs.dev/config/
 export default defineConfig(({mode}) => {
     const env = loadEnv(mode, process.cwd())
-    console.log("env",env);
     return {
         resolve: {
             alias: {
