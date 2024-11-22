@@ -1,4 +1,4 @@
-import {defineConfig} from 'vite'
+import {defineConfig, loadEnv} from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
 // 按需导入
@@ -15,9 +15,10 @@ import {FileSystemIconLoader} from 'unplugin-icons/loaders'
  // 导入UnoCSS
 import UnoCSS from 'unocss/vite'
 
-
 // https://vitejs.dev/config/
 export default defineConfig(({mode}) => {
+    const env = loadEnv(mode, process.cwd())
+    console.log("env",env);
     return {
         resolve: {
             alias: {
@@ -65,5 +66,17 @@ export default defineConfig(({mode}) => {
             }),
             UnoCSS({}),
         ],
+        server: {
+            host: '0.0.0.0',
+            port: Number(env.VITE_APP_PORT),
+            open: false,
+            proxy: {
+                [env.VITE_APP_BASE_API]: {
+                    target: 'http://localhost',
+                    changeOrigin: true,
+                    rewrite: path => path.replace(new RegExp("^" + env.VITE_APP_BASE_API), ""),
+                }
+            }
+        }
     }
 })
